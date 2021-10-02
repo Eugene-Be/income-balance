@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">IncomeBalance</string>
+    <string name="your_balance">ваш баланс</string>
+    <string name="income">доход</string>
+    <string name="outcome">расходы</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="confirmation_dialog_title">Подтвердите уделание транзакции</string>
+    <string name="delete">DELETE</string>
+    <string name="cancel">CANCEL</string>
+    <string name="edit_transaction_title">Редактирование записи</string>
+    <string name="save">SAVE</string>
 </resources>

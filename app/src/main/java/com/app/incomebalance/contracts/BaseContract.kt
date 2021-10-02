@@ -1,8 +1,12 @@
 package com.app.incomebalance.contracts
 
+import android.content.Context
+
 interface BaseContract {
 
-    interface View
+    interface View{
+        fun getViewContext(): Context
+    }
 
     interface Presenter {
         fun attachView(view: View)
