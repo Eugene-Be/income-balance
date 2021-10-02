@@ -1,15 +1,19 @@
 package com.app.incomebalance.data
 
+import android.content.Context
 import com.app.incomebalance.domain.Balance
 import com.app.incomebalance.domain.TransactionType
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class DatabaseTransactionRepository : TransactionRepository {
-    private val database: TransactionDatabase = TransactionDatabase.getInstance(context = null)!!
+@Singleton
+class DatabaseTransactionRepository @Inject constructor(context: Context) : TransactionRepository {
+
+    private val database: TransactionDatabase = TransactionDatabase.getInstance(context)!!
 
     override suspend fun getIncomes(): List<Transaction> {
         return database.dao.getTransactionsByType(TransactionType.INCOME) ?: listOf()
     }
-
 
     override suspend fun getOutcomes(): List<Transaction> {
         return database.dao.getTransactionsByType(TransactionType.OUTCOME) ?: listOf()
@@ -31,7 +35,7 @@ class DatabaseTransactionRepository : TransactionRepository {
         database.dao.insertTransaction(transaction)
     }
 
-    override suspend fun delete(transaction: Transaction) {
-        database.dao.deleteTransaction(transaction)
+    override suspend fun delete(transactionId: Long) {
+        database.dao.deleteTransaction(transactionId)
     }
 }

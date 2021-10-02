@@ -8,5 +8,5 @@ interface TransactionRepository {
     suspend fun getBalance(): Balance
     suspend fun create(transaction: Transaction): Transaction
     suspend fun update(transaction: Transaction)
-    suspend fun delete(transaction: Transaction)
+    suspend fun delete(transactionId: Long)
 }
