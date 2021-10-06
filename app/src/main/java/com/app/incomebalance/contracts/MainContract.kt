@@ -5,6 +5,4 @@ interface MainContract {
     interface View : BaseContract.View
 
     interface Presenter : BaseContract.Presenter
-
-    interface Router : BaseContract.Router
 }

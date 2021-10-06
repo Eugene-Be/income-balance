@@ -1,6 +1,6 @@
 package com.app.incomebalance.contracts
 
-import com.app.incomebalance.domain.Balance
+import com.app.incomebalance.domain.model.Balance
 
 interface BalanceContract {
 
@@ -11,6 +11,4 @@ interface BalanceContract {
     interface Presenter : BaseContract.Presenter {
         fun updateBalance()
     }
-
-    interface Router : BaseContract.Router
 }

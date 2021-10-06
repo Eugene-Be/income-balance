@@ -7,9 +7,7 @@ interface BaseEditTransactionContract {
     interface View : BaseContract.View
 
     interface Presenter : BaseContract.Presenter {
-        fun saveTransaction(transaction: Transaction)
-        fun cancel()
+        fun onSaveClicked(transaction: Transaction)
+        fun onCancelClicked()
     }
-
-    interface Router : BaseContract.Router
 }

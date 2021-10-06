@@ -1,7 +1,7 @@
 package com.app.incomebalance.data
 
 import androidx.room.*
-import com.app.incomebalance.domain.TransactionType
+import com.app.incomebalance.common.TransactionType
 
 @Dao
 interface TransactionDao {
