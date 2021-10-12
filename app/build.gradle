@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.app.incomebalance"
-        minSdk 21
+        minSdk 26
         targetSdk 30
         versionCode 1
         versionName "1.0"
@@ -36,7 +36,7 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     def room_version = "2.3.0"
 
@@ -59,4 +59,7 @@ dependencies {
     //dagger2
     implementation 'com.google.dagger:dagger:2.38.1'
     kapt 'com.google.dagger:dagger-compiler:2.33'
+
+    //Cicerone
+    implementation("com.github.terrakok:cicerone:7.1")
 }

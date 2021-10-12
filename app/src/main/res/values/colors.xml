@@ -10,4 +10,6 @@
 
     <color name="incomeChart">#92D36E</color>
     <color name="outcomeChart">#FF5D55</color>
+
+    <color name="background">#000000</color>
 </resources>

@@ -13,7 +13,7 @@ abstract class TransactionDatabase : RoomDatabase() {
 
             if (instance == null) {
                 instance = Room.databaseBuilder(context!!, TransactionDatabase::class.java, "TransactionsDb")
-                    .allowMainThreadQueries().build()//todo main thread clear
+                    .build()
             }
             return instance
         }

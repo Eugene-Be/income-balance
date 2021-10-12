@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -17,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
+        android:hint="@string/transaction_name"
         android:id="@+id/name_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,17 +24,20 @@
         android:gravity="center_horizontal"
         android:inputType="text"
         android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@id/editTransactionTitle" />
+        app:layout_constraintTop_toBottomOf="@id/editTransactionTitle"
+        android:importantForAutofill="no" />
 
     <EditText
+        android:hint="@string/transaction_value"
         android:id="@+id/value_editText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:gravity="center_horizontal"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@id/name_editText" />
+        app:layout_constraintTop_toBottomOf="@id/name_editText"
+        android:importantForAutofill="no" />
 
     <Button
         android:id="@+id/positiveButton"
@@ -55,7 +58,7 @@
         android:layout_gravity="bottom"
         android:layout_margin="50dp"
         android:layout_weight="1"
-        android:text="@string/cancel"
+        android:text="@android:string/cancel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/value_editText" />
 
