@@ -1,10 +1,13 @@
 package com.app.incomebalance.di
 
 import android.content.Context
+import com.app.incomebalance.common.DispatcherProvider
+import com.app.incomebalance.common.StandardDispatchers
 import com.app.incomebalance.contracts.*
 import com.app.incomebalance.data.DatabaseTransactionRepository
 import com.app.incomebalance.data.TransactionDatabase
 import com.app.incomebalance.domain.repository.TransactionRepository
+import com.app.incomebalance.presentation.BasePresenter
 import com.app.incomebalance.presentation.MainActivity
 import com.app.incomebalance.presentation.MainPresenter
 import com.app.incomebalance.presentation.balance.BalanceFragment
@@ -35,6 +38,7 @@ interface AppComponent {
     fun inject(mainActivity: MainActivity)
     fun inject(createEditBaseFragment: CreateEditBaseFragment)
     fun inject(pagerFragment: PagerFragment)
+    fun inject(basePresenter: BasePresenter)
 }
 
 @Module
@@ -54,6 +58,12 @@ class AppModule(private val context: Context) {
     @Singleton
     fun provideLocalDatabase(context: Context): TransactionDatabase {
         return TransactionDatabase.getInstance(context)!!
+    }
+
+    @Provides
+    @Singleton
+    fun provideDispatchers(standardDispatchers: StandardDispatchers): DispatcherProvider {
+        return standardDispatchers
     }
 
     @Provides

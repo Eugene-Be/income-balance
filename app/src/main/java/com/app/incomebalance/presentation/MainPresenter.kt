@@ -6,13 +6,11 @@ import com.app.incomebalance.contracts.MainContract
 import com.github.terrakok.cicerone.Router
 import javax.inject.Inject
 
-class MainPresenter @Inject constructor(router: Router) : BasePresenter(), MainContract.Presenter {
-    init {
-        _router = router
-    }
+class MainPresenter @Inject constructor() : BasePresenter(), MainContract.Presenter {
+
 
     override fun attachView(view: BaseContract.View) {
         super.attachView(view)
-        (_router as Router).newRootScreen(Screens.ViewPagerScreen())
+        (router as Router).newRootScreen(Screens.ViewPagerScreen())
     }
 }

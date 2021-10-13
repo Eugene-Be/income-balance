@@ -1,6 +1,7 @@
 package com.app.incomebalance.presentation.transactions
 
 import com.app.incomebalance.common.Resource
+import com.app.incomebalance.common.Screens
 import com.app.incomebalance.common.TransactionType
 import com.app.incomebalance.contracts.BaseContract
 import com.app.incomebalance.contracts.TransactionListContract
@@ -8,8 +9,6 @@ import com.app.incomebalance.data.Transaction
 import com.app.incomebalance.domain.use_case.DeleteTransactionUseCase
 import com.app.incomebalance.domain.use_case.GetTransactionsUseCase
 import com.app.incomebalance.presentation.BasePresenter
-import com.app.incomebalance.common.Screens
-import com.github.terrakok.cicerone.Router
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -20,12 +19,7 @@ import javax.inject.Inject
 class TransactionListPresenter @Inject constructor(
     private val deleteTransactionUseCase: DeleteTransactionUseCase,
     private val getTransactionsUseCase: GetTransactionsUseCase,
-    router: Router?,
 ) : BasePresenter(), TransactionListContract.Presenter {
-
-    init {
-        _router = router
-    }
 
     private var transactionType: TransactionType = TransactionType.INCOME
     val view get() = _view as TransactionListContract.View?
@@ -42,14 +36,13 @@ class TransactionListPresenter @Inject constructor(
 
     override fun getTransactions() {
         getTransactionsUseCase.execute(transactionType).onEach { result ->
-            withContext(Dispatchers.Main) {
+            withContext(dispatchers.main) {
                 when (result) {
                     is Resource.Error -> view?.showMessage(result.message!!)
                     is Resource.Loading -> view?.showProgress()
                     is Resource.Success -> view?.updateTransactionList(result.data!!)
                 }
             }
-
         }.launchIn(presenterScope)
     }
 
@@ -67,10 +60,10 @@ class TransactionListPresenter @Inject constructor(
     }
 
     override fun onAddTransactionPressed() {
-        _router?.navigateTo(Screens.CreateTransactionScreen(transactionType))
+        router?.navigateTo(Screens.CreateTransactionScreen(transactionType))
     }
 
     override fun onTransactionClicked(transaction: Transaction) {
-        _router?.navigateTo(Screens.EditTransactionScreen(transaction))
+        router?.navigateTo(Screens.EditTransactionScreen(transaction))
     }
 }
