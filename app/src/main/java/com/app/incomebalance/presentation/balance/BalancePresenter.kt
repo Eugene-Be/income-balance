@@ -4,7 +4,6 @@ import com.app.incomebalance.common.Resource
 import com.app.incomebalance.contracts.BalanceContract
 import com.app.incomebalance.domain.use_case.GetBalanceUseCase
 import com.app.incomebalance.presentation.BasePresenter
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.withContext
@@ -18,7 +17,7 @@ class BalancePresenter @Inject constructor(private val getBalanceUseCase: GetBal
 
     override fun updateBalance() {
         getBalanceUseCase.execute().onEach {
-            withContext(Dispatchers.Main) {
+            withContext(dispatchers.main) {
                 when (it) {
                     is Resource.Error -> view?.showMessage(it.message!!)
                     is Resource.Loading -> {}

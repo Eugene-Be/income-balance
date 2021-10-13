@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.app.incomebalance.common.DispatcherProvider
 import com.app.incomebalance.contracts.BaseContract
 import javax.inject.Inject
 
@@ -16,6 +17,9 @@ abstract class BaseFragment <V: ViewBinding,P:BaseContract.Presenter> : Fragment
 
     @Inject
     lateinit var presenter: P
+
+    @Inject
+    lateinit var dispatchers: DispatcherProvider
 
     override fun onCreateView(
         inflater: LayoutInflater,

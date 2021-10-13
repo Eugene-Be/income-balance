@@ -15,7 +15,6 @@ import com.app.incomebalance.data.Transaction
 import com.app.incomebalance.databinding.FragmentTransactionListBinding
 import com.app.incomebalance.presentation.BaseFragment
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
@@ -68,9 +67,9 @@ class TransactionListFragment :
         val callback = ListDiffCallback(oldList, newList)
         transactionAdapter?.transactions = newList
 
-        CoroutineScope(Dispatchers.Default).launch {
+        CoroutineScope(dispatchers.default).launch {
             val result = DiffUtil.calculateDiff(callback)
-            withContext(Dispatchers.Main) {
+            withContext(dispatchers.main) {
                 transactionAdapter?.let { result.dispatchUpdatesTo(it) }
             }
         }
