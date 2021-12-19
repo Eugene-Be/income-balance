@@ -7,6 +7,10 @@ And a balance screen with diagram and result of transactions
 
 https://app.moqups.com/sUzPgmIbhR/edit/page/ad64222d5
 
+## UML
+
+https://drive.google.com/file/d/1MoYj3Dl5iC6Ycp1qfCzUoUfO-tQa6FsZ/view?usp=sharing
+
 ## tools
 
 - Kotlin
